@@ -4,11 +4,11 @@ ELF=$(notdir $(CURDIR)).elf
 
 # Tool path
 
-TOOLROOT=/l/arm/codesourcery/bin
+TOOLROOT=/Users/brennon/bin/gcc-arm-none-eabi-4_9-2014q4/bin
 
 # Library path
 
-LIBROOT=/l/arm/STM32F10x_StdPeriph_Lib_V3.5.0
+LIBROOT=/Users/brennon/lib/STM32F10x_StdPeriph_Lib_V3.5.0
 
 # Tools
 
