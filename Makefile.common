@@ -73,7 +73,7 @@ clean:
 	rm -f $(OBJS) $(OBJS:.o=.d) $(ELF) startup_stm32f* $(CLEANOTHER)
 
 debug: $(ELF)
-	arm-none-eabi-gdb $(ELF)
+	$(TOOLROOT)/arm-none-eabi-gdb $(ELF)
 
 
 # pull in dependencies
