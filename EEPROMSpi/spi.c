@@ -18,6 +18,9 @@ void spiInit(SPI_TypeDef *SPIx)
 	GPIO_StructInit(&GPIO_InitStructure);
 	SPI_StructInit(&SPI_InitStructure);
 
+	// Enable the chip select pin
+	csInit();
+
 	if(SPIx == SPI2)
 	{
 		// Enable Peripheral Clocks for spi 2
@@ -128,4 +131,18 @@ int spiReadWrite16(SPI_TypeDef* SPIx, uint16_t *rbuf, const uint16_t *tbuf, int 
 	SPI_DataSizeConfig(SPIx, SPI_DataSize_8b);
 
 	return i;
+}
+
+// Initialize the chip select pin (PC06)
+void csInit()
+{
+	GPIO_InitTypeDef	GPIO_InitStructure;
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+	
+	GPIO_StructInit(&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin =   GPIO_Pin_6;
+	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
 }
